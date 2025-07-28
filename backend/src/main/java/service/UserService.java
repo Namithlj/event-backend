@@ -14,12 +14,15 @@ public class UserService {
     }
 
     public User signup(User user) {
-    	System.out.println(user);
         return userRepo.save(user);
     }
 
     public boolean login(String email, String password) {
-        Optional<User> user = userRepo.findByEmail(email);
-        return user.isPresent() && user.get().getPassword().equals(password);
+        Optional<User> existing = userRepo.findByEmail(email);
+        if (existing.isPresent()) {
+            User user = existing.get();
+            return user.getPassword().equals(password); // Plain text match
+        }
+        return false;
     }
 }

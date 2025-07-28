@@ -1,10 +1,9 @@
 package service;
+
 import model.Booking;
-
-
-
 import repository.BookingRepository;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class BookingService {
@@ -18,7 +17,8 @@ public class BookingService {
         return bookingRepo.save(booking);
     }
 
-    public boolean isDateAvailable(String bookingDate) {
-        return bookingRepo.findByBookingDate(bookingDate).isEmpty();
+    public boolean isDateAvailable(String eventDate) {
+        List<Booking> bookings = bookingRepo.findByEventDate(eventDate);
+        return bookings.isEmpty();
     }
 }

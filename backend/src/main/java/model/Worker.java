@@ -8,81 +8,42 @@ public class Worker {
     @Id
     private String id;
 
-    private String serviceType;
-    private String location;
-    private Double price;
-
-    // Additional
-    private String cateringItems;
-    private Integer cateringBoysCount;
-    private String vehicleType;
-    private Integer hallCapacity;
-    private String decorationTheme;
+    private String name;
+    private String phone;
+    private String email;
+    private String location;   // pincode or address
+    private String serviceType; // "Hotel", "Photography", "Catering", "Decoration", "FunctionHall"
+    private String experience;  // e.g., "5 years"
+    private double price;
+    private String priceBasis;  // e.g., "per day", "per event"
 
     public Worker() {}
 
     // Getters & Setters
- // Getters and Setters
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
-    public String getServiceType() {
-        return serviceType;
-    }
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getLocation() {
-        return location;
-    }
-    public void setLocation(String location) {
-        this.location = location;
-    }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
-    public Double getPrice() {
-        return price;
-    }
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getCateringItems() {
-        return cateringItems;
-    }
-    public void setCateringItems(String cateringItems) {
-        this.cateringItems = cateringItems;
-    }
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
 
-    public Integer getCateringBoysCount() {
-        return cateringBoysCount;
-    }
-    public void setCateringBoysCount(Integer cateringBoysCount) {
-        this.cateringBoysCount = cateringBoysCount;
-    }
+    public String getServiceType() { return serviceType; }
+    public void setServiceType(String serviceType) { this.serviceType = serviceType; }
 
-    public String getVehicleType() {
-        return vehicleType;
-    }
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
-    }
+    public String getExperience() { return experience; }
+    public void setExperience(String experience) { this.experience = experience; }
 
-    public Integer getHallCapacity() {
-        return hallCapacity;
-    }
-    public void setHallCapacity(Integer hallCapacity) {
-        this.hallCapacity = hallCapacity;
-    }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
 
-    public String getDecorationTheme() {
-        return decorationTheme;
-    }
-    public void setDecorationTheme(String decorationTheme) {
-        this.decorationTheme = decorationTheme;
-    }
+    public String getPriceBasis() { return priceBasis; }
+    public void setPriceBasis(String priceBasis) { this.priceBasis = priceBasis; }
 }

@@ -12,18 +12,19 @@ import service.WorkerService;
 @RequestMapping("/api/workers")
 @CrossOrigin(origins = "http://localhost:4200")
 public class WorkerController {
+
     private final WorkerService workerService;
 
     public WorkerController(WorkerService workerService) {
         this.workerService = workerService;
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public Worker registerWorker(@RequestBody Worker worker) {
-        if(worker.getServiceType() == null || worker.getServiceType().isBlank()) {
+        if (worker.getServiceType() == null || worker.getServiceType().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ServiceType is required");
         }
-        if(worker.getLocation() == null || worker.getLocation().isBlank()) {
+        if (worker.getLocation() == null || worker.getLocation().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Location is required");
         }
         return workerService.registerWorker(worker);
@@ -32,5 +33,11 @@ public class WorkerController {
     @GetMapping
     public List<Worker> getAllWorkers() {
         return workerService.getAllWorkers();
+    }
+
+    // Custom search endpoint for booking page
+    @GetMapping("/search")
+    public List<Worker> searchWorkers(@RequestParam String query) {
+        return workerService.searchWorkers(query);
     }
 }

@@ -11,11 +11,12 @@ import service.UserService;
 public class UserController {
     private final UserService userService;
 
-    public UserController(UserService userService) { this.userService = userService; }
+    public UserController(UserService userService) { 
+        this.userService = userService; 
+    }
 
     @PostMapping("/signup")
     public User signup(@RequestBody User user) {
-    	System.out.println(user);
         return userService.signup(user);
     }
 

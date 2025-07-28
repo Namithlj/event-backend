@@ -1,19 +1,23 @@
 package controller;
+
 import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 import model.Booking;
-import model.ServiceDetails;
 import service.BookingService;
+import service.WorkerService;
 
 @RestController
 @RequestMapping("/api/bookings")
 @CrossOrigin(origins = "http://localhost:4200")
 public class BookingController {
-    private final BookingService bookingService;
 
-    public BookingController(BookingService bookingService) {
+    private final BookingService bookingService;
+    private final WorkerService workerService;
+
+    public BookingController(BookingService bookingService, WorkerService workerService) {
         this.bookingService = bookingService;
+        this.workerService = workerService;
     }
 
     @GetMapping("/nearest")
@@ -21,14 +25,16 @@ public class BookingController {
         boolean available = bookingService.isDateAvailable(date);
 
         Map<String, Object> response = new HashMap<>();
-        if (!available) response.put("message", "Date not available, showing nearest available data");
+        if (!available) {
+            response.put("message", "Date not available, showing nearest available data");
+        }
 
-        // Static service data (replace with DB queries later)
-        response.put("hotels", new ServiceDetails[]{new ServiceDetails("Hotel A", 15000), new ServiceDetails("Hotel B", 12000)});
-        response.put("functionHalls", new ServiceDetails[]{new ServiceDetails("Function Hall A", 10000), new ServiceDetails("Function Hall B", 12000)});
-        response.put("catering", new ServiceDetails[]{new ServiceDetails("Catering A", 8000), new ServiceDetails("Catering B", 9500)});
-        response.put("decoration", new ServiceDetails[]{new ServiceDetails("Decoration A", 3000), new ServiceDetails("Decoration B", 2800)});
-        response.put("photography", new ServiceDetails[]{new ServiceDetails("Photography A", 4000), new ServiceDetails("Photography B", 3500)});
+        response.put("hotels", workerService.findByTypeAndPincode("hotel", pincode));
+        response.put("functionHalls", workerService.findByTypeAndPincode("hall", pincode));
+        response.put("catering", workerService.findByTypeAndPincode("catering", pincode));
+        response.put("decoration", workerService.findByTypeAndPincode("decoration", pincode));
+        response.put("photography", workerService.findByTypeAndPincode("photography", pincode));
+
         return response;
     }
 

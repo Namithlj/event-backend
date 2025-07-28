@@ -3,16 +3,17 @@ package model;
 public class ServiceDetails {
     private String name;
     private double price;
+    private String priceBasis;  // new
 
     public ServiceDetails() {}
 
-    public ServiceDetails(String name, double price) {
+    public ServiceDetails(String name, double price, String priceBasis) {
         this.name = name;
         this.price = price;
+        this.priceBasis = priceBasis;
     }
 
-    // Getters & Setters
- // Getters and Setters
+    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -25,5 +26,12 @@ public class ServiceDetails {
     }
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getPriceBasis() {
+        return priceBasis;
+    }
+    public void setPriceBasis(String priceBasis) {
+        this.priceBasis = priceBasis;
     }
 }
