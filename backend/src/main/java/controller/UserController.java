@@ -6,7 +6,7 @@ import model.User;
 import service.UserService;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/")
 @CrossOrigin(origins = "*")
 public class UserController {
     private final UserService userService;
