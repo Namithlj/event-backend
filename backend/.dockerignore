@@ -1,0 +1,17 @@
+# Ignore Maven target output
+target
+
+# Ignore Git files
+.git
+.gitignore
+
+# Documentation and metadata
+README.md
+Dockerfile
+.dockerignore
+
+# IDE configs (optional, safe to ignore)
+*.iml
+*.log
+*.idea
+.vscode
