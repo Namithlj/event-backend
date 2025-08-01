@@ -1,14 +1,12 @@
-# Use official Java image
-FROM eclipse-temurin:17-jdk-alpine
-
-# Set working directory
+# Stage 1: Build JAR
+FROM eclipse-temurin:17-jdk-alpine AS build
 WORKDIR /app
+COPY . .
+RUN ./mvnw clean package -DskipTests
 
-# Copy built JAR from Maven target
-COPY target/*.jar app.jar
-
-# Expose application port (Render sets $PORT)
+# Stage 2: Run JAR
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-
-# Start Spring Boot using Render-provided port
 ENTRYPOINT ["java","-Dserver.port=${PORT}","-jar","app.jar"]
