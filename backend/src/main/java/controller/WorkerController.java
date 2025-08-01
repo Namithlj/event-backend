@@ -9,7 +9,7 @@ import model.Worker;
 import service.WorkerService;
 
 @RestController
-@RequestMapping("/workers")
+@RequestMapping("/api/workers")
 @CrossOrigin(origins = "*")
 public class WorkerController {
 

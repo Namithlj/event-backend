@@ -8,7 +8,7 @@ import service.BookingService;
 import service.WorkerService;
 
 @RestController
-@RequestMapping("/bookings")
+@RequestMapping("/api/bookings")
 @CrossOrigin(origins = "*")
 public class BookingController {
 
