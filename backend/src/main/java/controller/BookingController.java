@@ -9,7 +9,7 @@ import service.WorkerService;
 
 @RestController
 @RequestMapping("/api/bookings")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class BookingController {
 
     private final BookingService bookingService;

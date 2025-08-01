@@ -10,7 +10,7 @@ import service.WorkerService;
 
 @RestController
 @RequestMapping("/api/workers")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class WorkerController {
 
     private final WorkerService workerService;
