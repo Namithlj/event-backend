@@ -14,6 +14,7 @@
   <groupId>com.example</groupId>
   <artifactId>event-management-backend</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <name>event-management-backend</name>
   <description>Event Management Backend with Razorpay Integration</description>
 
@@ -22,26 +23,26 @@
   </properties>
 
   <dependencies>
-		<!-- Spring Boot -->
+    <!-- Spring Boot Web for REST API -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-		<!-- MongoDB -->
+    <!-- MongoDB integration -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-mongodb</artifactId>
     </dependency>
 
-		<!-- Razorpay SDK -->
+    <!-- Razorpay SDK for Payment Integration -->
     <dependency>
       <groupId>com.razorpay</groupId>
       <artifactId>razorpay-java</artifactId>
       <version>1.4.3</version>
     </dependency>
 
-		<!-- Lombok -->
+    <!-- Lombok for reducing boilerplate code -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
@@ -49,7 +50,7 @@
       <scope>provided</scope>
     </dependency>
 
-		<!-- Spring Boot DevTools (optional for hot reload) -->
+    <!-- Spring Boot DevTools (optional for hot reload during development) -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
@@ -57,7 +58,7 @@
       <optional>true</optional>
     </dependency>
 
-		<!-- Testing -->
+    <!-- Spring Boot Test dependencies -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -67,7 +68,7 @@
 
   <build>
     <plugins>
-			<!-- Compiler plugin with annotation processors -->
+      <!-- Compiler Plugin with Lombok annotation processing -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -85,12 +86,11 @@
         </configuration>
       </plugin>
 
-			<!-- Spring Boot Plugin -->
+      <!-- Spring Boot Plugin for creating executable JAR -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
-
 </project>
